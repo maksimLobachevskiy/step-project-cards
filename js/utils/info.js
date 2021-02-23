@@ -1,4 +1,16 @@
 export const info = {
+    email: {
+        type: "email",
+        placeholder: "Email",
+        isRequired: true
+    },
+
+    password: {
+        type: "password",
+        placeholder: "Password",
+        isRequired: true
+    },
+
     fullName: {
         type: "text",
         placeholder: "ФИО",
@@ -40,6 +52,7 @@ export const info = {
     submit: {
         type: "submit"
     },
+
     priority: [
         "Выберите срочность",
         "Низкая",
