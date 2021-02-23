@@ -1,0 +1,52 @@
+body{
+  background-color: #ecf4fb;
+}
+.header{
+  background-color: #dce2e7;
+  .header__item{
+    padding: 10px;
+  }
+  .logo{
+    width: 300px;
+  }
+}
+
+.main{
+  background-color: #f9fcff;
+  .content{
+    min-height: calc(100vh - 121px - 49px);
+  }
+  .aside__main{
+    background-color: #e9e9e9;
+    .text-danger{
+      padding:  15px 0;
+      color: #f9727fed;
+    }
+    .text-center{
+      padding-top:  15px ;
+      color: #717171;
+    }
+  }
+.start__text{
+  margin-top: 25px;
+  font-size: 30px;
+  color: #f9727fed;
+}
+  .d-flex{
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/Medical20201.png");
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+   }
+}
+
+.footer{
+  background-color: #dce2e7;
+  .footer_text{
+    padding: 10px;
+    text-align: center;
+  }
+}
+
