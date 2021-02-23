@@ -5,10 +5,13 @@ import FormCardiologist from "./Form/FormCardiologist";
 import Form from "./Form/Form";
 import FormDentist from './Form/FormDentist'
 import FormTherapist from './Form/FormTherapist'
+import newEntry from './entry'
 import LoginForm from "./Form/LoginForm";
-const modalLogin = document.querySelector('.modal-login')
-const form = new LoginForm();
+
 
 //const content = document.getElementById('content');
 
-form.render(modalLogin)
+
+newEntry()
+
+
