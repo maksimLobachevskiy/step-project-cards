@@ -12,7 +12,7 @@ export default class Input {
         if (this.isUsed(this.placeholder)) {
             this.self.placeholder = this.placeholder;
             this.self.required = this.isRequired;
-        };
+        }
         this.self.classList.add(this.className);
         return this.self;
     };

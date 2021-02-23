@@ -6,7 +6,7 @@ import Form from "./Form.js"
 export default class FormDentist extends Form {
     constructor(doctor) {
         super(doctor)
-        this.lastDateVisit = new Input(info.lastDateVisit, "form__input").create();
+        this.lastDateVisit = new Input(info.lastDateVisit, "form-control").create();
     }
     render(modal) {
         super.render(modal);
