@@ -1,3 +1,4 @@
+export const token = localStorage.getItem('token');
 export const info = {
     email: {
         type: "email",

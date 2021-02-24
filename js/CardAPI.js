@@ -1,5 +1,5 @@
 export const API = 'http://cards.danit.com.ua';
-///import {token} - не здесь нужен импорт переменой в которой будет sessionStorage.getItem('token')
+import {token} from 'utils/info'
 //
 
 export function getLogin(email, password) {
