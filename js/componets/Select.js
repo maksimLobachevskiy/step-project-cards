@@ -1,8 +1,9 @@
 export default class Select {
-    constructor(optionsArr, className) {
+    constructor(optionsArr, className, value) {
         this.options = optionsArr;
         this.self = document.createElement("select");
         this.className = className;
+        this.value = value;
     };
 
     create() {

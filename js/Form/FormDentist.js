@@ -10,6 +10,7 @@ export default class FormDentist extends Form {
     }
     render(modal) {
         super.render(modal);
+        this.self.classList.add('form-dentist');
         this.self.insertBefore(this.lastDateVisit, this.submit);
     };
 };

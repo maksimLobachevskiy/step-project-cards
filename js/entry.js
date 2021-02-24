@@ -1,5 +1,6 @@
 import LoginForm from "./Form/LoginForm";
 import plug from "./Form/plug";
+import FormSelect from "./Form/FormSelect";
 
 const GHE = (selector) => document.querySelector(selector)
 const email = 'step@project.cards'
@@ -19,6 +20,7 @@ export default function newEntry() {
         exit.addEventListener('click',exitLayaut)
         // функция рендера id="content"
         plug()//удалить
+
     }
     if (!thisToken()) {
         const modalLogin = GHE('.modal-login')
@@ -54,11 +56,15 @@ function login() {
                 .then(respLogin => {
                     const entry = GHE('.entry')
                     const newVisit = GHE('.new-visit')
+                    const exit = GHE('.exit')
                     if (respLogin == token) {
+
                         newVisit.style = "display:block;"
+                        exit.style = "display:block;"
                         entry.style = "display:none;"
                         localStorage.setItem('token', respLogin)
                         GHE('.btn-close').click()
+
                         // функция рендера id="content"
                         plug()//удалить
                     }
