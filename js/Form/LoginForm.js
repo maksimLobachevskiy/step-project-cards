@@ -13,6 +13,8 @@ export default class LoginForm {
 
     }
     render(modal) {
+        this.email.setAttribute("id", 'emailId');
+        this.password.setAttribute("id", 'password');
         this.self.append(this.email, this.password, this.submit);
         modal.append(this.self);
     }
