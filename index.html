@@ -5,39 +5,53 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <title>step-project-cards</title>
 </head>
 <body>
 <header>
     <div class="container-xl">
         <div class="row align-items-center header">
-            <div class="col-10 header__item">
+            <div class="col-6 header__item">
                 <img class="logo rounded float-start" src="img/logo.png" alt="Logo">
             </div>
-            <div class="col-2 header__item ">
-<!--                кнопка входа-->
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary entry" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Login
-                </button>
+            <div class="col-6 header__item ">
+                <div class="row  justify-content-end header__button">
+                    <!--                кнопка входа-->
+                    <!-- Button trigger modal -->
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-primary entry" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                            Login
+                        </button>
+                    </div>
 
-                <!-- Modal -->
-                <div class="modal fade modal-entry" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body modal-login">
+                    <!-- Modal -->
+                    <div class="modal fade modal-entry" id="exampleModal" tabindex="-1"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body modal-login">
 
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!--                кнопка нового визита-->
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-info new-visit" style="display: none">Create new visit
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-info btn-danger exit" style="display: none">EXIT</button>
+                    </div>
                 </div>
-<!--                кнопка нового визита-->
-                <button type="button" class="btn btn-info entry new-visit" style="display: none">Create new visit</button>
             </div>
         </div>
     </div>
@@ -46,11 +60,15 @@
     <div class="container-xl">
         <div class="row main">
             <div class="col-3 aside__main">
-              <h3 class="text-center">Medical center Health and Dental Vehicles</h3>
-                <h5 class="text-danger text-center" >BUILT TO PROVIDE HEALTH SERVICES WHERE NEEDED</h5>
-                <p>You need a vehicle with the right technology and functionality to provide the best care possible for your patients. We do everything we can to be a successful partner in that venture. We take your needs seriously and allow you to guide our hands every step of the way. From ergonomics and durability to workflow and cleanliness, we consider every aspect of the design so you can feel confident that our vehicles are safe, secure and exceed your specifications.</p>
+                <h3 class="text-center">Medical center Health and Dental Vehicles</h3>
+                <h5 class="text-danger text-center">BUILT TO PROVIDE HEALTH SERVICES WHERE NEEDED</h5>
+                <p>You need a vehicle with the right technology and functionality to provide the best care possible for
+                    your patients. We do everything we can to be a successful partner in that venture. We take your
+                    needs seriously and allow you to guide our hands every step of the way. From ergonomics and
+                    durability to workflow and cleanliness, we consider every aspect of the design so you can feel
+                    confident that our vehicles are safe, secure and exceed your specifications.</p>
             </div>
-<!--            рендерим содержымое id="content"-->
+            <!--            рендерим содержымое id="content"-->
             <div class="col-9 content" id="content">
                 <div class="d-flex justify-content-center forminner">
                     <p class="align-middle start__text">You must be logged in to proceed!</p>
@@ -63,14 +81,16 @@
 <footer>
     <div class="container-xl">
         <div class="row justify-content-center footer">
-             <div class="col-12 footer__item">
-                 <p class="h6 footer_text">step-project-cards &#169 2021г.</p>
-             </div>
+            <div class="col-12 footer__item">
+                <p class="h6 footer_text">step-project-cards &#169 2021г.</p>
+            </div>
         </div>
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
 <script src="./js/index.js"></script>
 </body>
 </html>

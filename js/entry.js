@@ -1,4 +1,5 @@
 import LoginForm from "./Form/LoginForm";
+import plug from "./Form/plug";
 
 const GHE = (selector) => document.querySelector(selector)
 const email = 'step@project.cards'
@@ -8,11 +9,16 @@ const token = "7b4afba8-3267-406f-8280-a610a6985812";
 export default function newEntry() {
     const entry = GHE('.entry')
     const newVisit = GHE('.new-visit')
+    const exit = GHE('.exit')
+
 
     if (thisToken()) {
+        exit.style = "display:block;"
         newVisit.style = "display:block;"
         entry.style = "display:none;"
+        exit.addEventListener('click',exitLayaut)
         // функция рендера id="content"
+        plug()//удалить
     }
     if (!thisToken()) {
         const modalLogin = GHE('.modal-login')
@@ -54,6 +60,7 @@ function login() {
                         localStorage.setItem('token', respLogin)
                         GHE('.btn-close').click()
                         // функция рендера id="content"
+                        plug()//удалить
                     }
                 })
         } else {
@@ -61,3 +68,17 @@ function login() {
         }
     })
 }
+
+function exitLayaut(){
+    localStorage.removeItem('token');
+    const element = GHE("#content")
+    element.innerHTML = '<div class="d-flex justify-content-center forminner"><p class="align-middle start__text">You must be logged in to proceed!</p></div>'
+    const entry = GHE('.entry')
+    const newVisit = GHE('.new-visit')
+    const exit = GHE('.exit')
+    exit.style = "display:none;"
+    newVisit.style = "display:none;"
+    entry.style = "display:block;"
+    newEntry()
+}
+export {GHE}
