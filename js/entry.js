@@ -11,14 +11,12 @@ export default function newEntry() {
     const newVisit = GHE('.new-visit')
     const exit = GHE('.exit')
 
-    exit.addEventListener('click',exitLayaut)
-
 
     if (thisToken()) {
         exit.style = "display:block;"
         newVisit.style = "display:block;"
         entry.style = "display:none;"
-
+        exit.addEventListener('click',exitLayaut)
         // функция рендера id="content"
         plug()//удалить
     }
@@ -75,5 +73,12 @@ function exitLayaut(){
     localStorage.removeItem('token');
     const element = GHE("#content")
     element.innerHTML = '<div class="d-flex justify-content-center forminner"><p class="align-middle start__text">You must be logged in to proceed!</p></div>'
+    const entry = GHE('.entry')
+    const newVisit = GHE('.new-visit')
+    const exit = GHE('.exit')
+    exit.style = "display:none;"
+    newVisit.style = "display:none;"
+    entry.style = "display:block;"
+    newEntry()
 }
 export {GHE}
