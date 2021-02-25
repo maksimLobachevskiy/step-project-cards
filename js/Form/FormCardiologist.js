@@ -6,10 +6,10 @@ import Form from "./Form.js"
 export default class FormCardiologist extends Form {
     constructor(doctor) {
         super(doctor);
-        this.pressure = new Input(info.pressure, "form-control").create();
-        this.bodyMassIndex = new Input(info.weightIndex, "form-control").create();
-        this.diseases = new TextArea(info.illness, "form-control").create();
-        this.age = new Input(info.age, "form-control").create();
+        this.pressure = new Input(info.pressure, "form-control", 'pressure').create();
+        this.bodyMassIndex = new Input(info.weightIndex, "form-control", 'BMI').create();
+        this.diseases = new TextArea(info.illness, "form-control", 'diseases').create();
+        this.age = new Input(info.age, "form-control", 'age').create();
     }
 
     render(modal) {

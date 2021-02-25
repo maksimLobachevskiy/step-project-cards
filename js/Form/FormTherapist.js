@@ -6,7 +6,7 @@ import Form from "./Form";
 export default class FormTherapist extends Form {
     constructor(doctor) {
         super(doctor)
-        this.age = new Input(info.age, "form-select").create();
+        this.age = new Input(info.age, "form-control", 'age').create();
     }
 
     render(modal) {

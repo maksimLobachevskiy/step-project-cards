@@ -1,6 +1,5 @@
-export const API = 'http://cards.danit.com.ua';
-import {token} from 'utils/info'
-//
+import { token } from 'utils/info'
+export const API = 'https://ajax.test-danit.com/api/v2/cards';
 
 export function getLogin(email, password) {
     return fetch(`${API}/login`,{
@@ -14,9 +13,10 @@ export function getLogin(email, password) {
 
 export function createCard(card) {
     return fetch(`${API}/cards`,{
-        method: "POST",
+        method: 'POST',
         headers: {
-            Authorization: `Bearer ${token}`
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(card)
     })
