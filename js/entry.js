@@ -10,7 +10,10 @@ const newVisit = GHE('.new-visit')
 const exit = GHE('.exit')
 
 export default function newEntry() {
-
+    entry.addEventListener('click', login)
+    const modalLogin = GHE('.modal-login')
+    const form = new LoginForm();
+    form.render(modalLogin)
 
     if (thisToken()) {
         exit.style = "display:block;"
@@ -22,12 +25,13 @@ export default function newEntry() {
         plug()//удалить
     }
     if (!thisToken()) {
-        entry.addEventListener('click', login)
+
     }
 }
 
 function thisToken() {
     if (localStorage.getItem('token') == token) {
+
         return true;
     }
     return false;
@@ -51,6 +55,10 @@ function login() {
                 .then(response => response.text())
                 .then(respLogin => {
                     if (respLogin == token) {
+                        const form=GHE('form')
+                        if (form.parentNode) {
+                            form.parentNode.removeChild(form);
+                        }
                         exit.style = "display:block;"
                         newVisit.style = "display:block;"
                         entry.style = "display:none;"
@@ -74,11 +82,7 @@ function exitLayaut() {
     entry.style = "display:block;"
     newVisit.style = "display:none;"
     exit.style = "display:none;"
-    // newEntry()
+    newEntry()
 }
-
-const modalLogin = GHE('.modal-login')
-const form = new LoginForm();
-form.render(modalLogin)
 
 export {GHE}
