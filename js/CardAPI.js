@@ -1,4 +1,4 @@
-import { token } from 'utils/info'
+import {token} from './utils/info'
 export const API = 'https://ajax.test-danit.com/api/v2/cards';
 
 export function getLogin(email, password) {
@@ -12,7 +12,7 @@ export function getLogin(email, password) {
 }
 
 export function createCard(card) {
-    return fetch(`${API}/cards`,{
+    return fetch(`${API}`,{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export function createCard(card) {
 }
 
 export function deleteCard(id) {
-    return fetch(`${API}/cards/${id}`,{
+    return fetch(`${API}/${id}`,{
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`
@@ -32,7 +32,7 @@ export function deleteCard(id) {
 }
 
 export function editCard(newCard, cardId) {
-    return fetch(`${API}/cards/${cardId}`,{
+    return fetch(`${API}/${cardId}`,{
         method: "PUT",
         headers: {
             Authorization: `Bearer ${token}`

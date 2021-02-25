@@ -1,4 +1,4 @@
-export let token = localStorage.getItem('token');
+export const token = localStorage.getItem('token');
 export const info = {
     email: {
         type: "email",
@@ -12,42 +12,60 @@ export const info = {
         isRequired: true
     },
 
+    cardiologist: {
+        type: "text",
+        placeholder: "cardiologist",
+        isRequired: true
+    },
+
+    dentist: {
+        type: "text",
+        placeholder: "Dentist",
+        isRequired: true
+    },
+
+    therapist: {
+        type: "text",
+        placeholder: "Therapist",
+        isRequired: true
+    },
+
     fullName: {
         type: "text",
-        placeholder: "ФИО",
+        placeholder: "Full name",
         isRequired: true
     },
     age: {
         type: "text",
-        placeholder: "Возраст",
+        placeholder: "Age",
         isRequired: true
     },
     purpose: {
         type: "text",
-        placeholder: "Цель визита",
+        placeholder: "Visit purpose",
         isRequired: true
     },
     desc: {
-        placeholder: "Описание визита",
+        placeholder: "Visit description",
         isRequired: true
     },
     pressure: {
         type: "text",
-        placeholder: "Давление",
+        placeholder: "Pressure",
         isRequired: true
     },
     weightIndex: {
         type: "text",
-        placeholder: "Индекс массы тела",
+        placeholder: "Body mass index",
         isRequired: true
     },
     illness: {
-        placeholder: "Ранее перенесённые заболевания сердца",
+        placeholder: "Heart diseases in past",
         isRequired: true
     },
     lastDateVisit: {
         type: "text",
-        placeholder: "Дата последнего визита",
+        placeholder: "Last visit date",
         isRequired: true
     },
     submit: {
@@ -55,10 +73,10 @@ export const info = {
     },
 
     priority: [
-        "Выберите срочность",
-        "Низкая",
-        "Обычная",
-        "Высокая"
+        "Choose urgency",
+        "Low",
+        "Common",
+        "High"
     ],
 
     docSelect: [
@@ -68,13 +86,13 @@ export const info = {
     ],
 
     cardEdit: [
-        "Опции редактирования",
-        "Редактировать",
-        "Удалить",
+        "Edit options",
+        "Edit",
+        "Delete",
     ],
     status: [
-        "Выберите статус",
-        "Открыт",
-        "Закрыт"
+        "Choose status",
+        "Open",
+        "Closed"
     ]
 }

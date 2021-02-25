@@ -9,6 +9,7 @@ import newEntry, {GHE} from './entry'
 import LoginForm from "./Form/LoginForm";
 import FormSelect from "./Form/FormSelect";
 import {token} from './utils/info'
+import {API} from "./CardAPI";
 
 const selector = new FormSelect();
 const formWrapper = document.querySelector(".select-wrapper");
@@ -31,34 +32,3 @@ window.onclick = function(event) {
     }
 }
 newEntry()
-
-// function submit() {
-//     const submit = document.querySelector(".btn-primary-btn");
-//
-//     const getFormData = () => {
-//         const form = document.getElementById("form");
-//         return new FormData(form);
-//     }
-//
-//     const toJson = function(event) {
-//         const formData = getFormData();
-//         event.preventDefault();
-//         let object = {};
-//         formData.forEach((name, key) => {
-//             if (!Reflect.has(object, key)) {
-//                 object[key] = name;
-//                 return;
-//             }
-//             if (!Array.isArray(object[key])) {
-//                 object[key] = [object[key]];
-//             }
-//             object[key].push(name);
-//         });
-//         let json = JSON.stringify(object);
-//         console.log(json);
-//     };
-//
-//     submit.addEventListener("click", toJson);
-// }
-//
-// submit();
