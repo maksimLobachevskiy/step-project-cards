@@ -20,5 +20,7 @@ export default class Form {
         this.self.append(this.fullName, this.purpose, this.desc, this.priority, this.status, this.submit);
         modal.append(this.self);
     }
+
+
 }
 

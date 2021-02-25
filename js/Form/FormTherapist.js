@@ -11,6 +11,7 @@ export default class FormTherapist extends Form {
 
     render(modal) {
         super.render(modal);
+        this.self.classList.add('form-therapist');
         this.self.insertBefore(this.age, this.submit);
     };
 };

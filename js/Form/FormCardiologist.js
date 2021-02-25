@@ -14,6 +14,7 @@ export default class FormCardiologist extends Form {
 
     render(modal) {
         super.render(modal);
+        this.self.classList.add('form-cardio');
         this.self.insertBefore(this.pressure, this.submit);
         this.self.insertBefore(this.bodyMassIndex, this.submit);
         this.self.insertBefore(this.diseases, this.submit);
@@ -25,4 +26,5 @@ export default class FormCardiologist extends Form {
      //     })
 
     };
+
 };

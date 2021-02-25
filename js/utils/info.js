@@ -60,6 +60,13 @@ export const info = {
         "Обычная",
         "Высокая"
     ],
+
+    docSelect: [
+        "Cardiologist",
+        "Dentist",
+        "Therapeutist",
+    ],
+
     cardEdit: [
         "Опции редактирования",
         "Редактировать",
