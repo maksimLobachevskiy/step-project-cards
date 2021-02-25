@@ -1,6 +1,6 @@
-export const API = 'http://cards.danit.com.ua';
+export const API = 'https://ajax.test-danit.com/api/v2/cards';
 import {token} from 'utils/info'
-//
+
 
 export function getLogin(email, password) {
     return fetch(`${API}/login`,{
