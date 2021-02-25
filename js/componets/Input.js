@@ -1,9 +1,10 @@
 export default class Input {
-    constructor({type, placeholder, isRequired}, className) {
+    constructor({type, placeholder, isRequired}, className, attr) {
         this.type = type;
         this.placeholder = placeholder;
         this.isRequired = isRequired;
         this.className = className;
+        this.attr = attr;
         this.self = document.createElement("input");
     };
 
@@ -14,8 +15,10 @@ export default class Input {
             this.self.required = this.isRequired;
         }
         this.self.classList.add(this.className);
+        this.self.setAttribute('name', this.attr);
         return this.self;
-    };
+
+};
     isUsed(prop) {
         return !(prop === null || prop === undefined || prop === "");
     };

@@ -9,6 +9,7 @@ import newEntry, {GHE} from './entry'
 import LoginForm from "./Form/LoginForm";
 import FormSelect from "./Form/FormSelect";
 import {token} from './utils/info'
+import {API} from "./CardAPI";
 
 const selector = new FormSelect();
 const formWrapper = document.querySelector(".select-wrapper");

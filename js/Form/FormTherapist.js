@@ -6,12 +6,16 @@ import Form from "./Form";
 export default class FormTherapist extends Form {
     constructor(doctor) {
         super(doctor)
-        this.age = new Input(info.age, "form-select").create();
+        this.doc = new Input(info.therapist, "form-control", 'doctor').create();
+        this.age = new Input(info.age, "form-control", 'age').create();
     }
 
     render(modal) {
         super.render(modal);
         this.self.classList.add('form-therapist');
+        this.doc.defaultValue = 'Therapist';
+        this.doc.disabled = true;
+        this.self.insertBefore(this.doc, this.fullName);
         this.self.insertBefore(this.age, this.submit);
     };
 };

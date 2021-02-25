@@ -13,17 +13,18 @@ export function getLogin(email, password) {
 }
 
 export function createCard(card) {
-    return fetch(`${API}/cards`,{
-        method: "POST",
+    return fetch(`${API}`,{
+        method: 'POST',
         headers: {
-            Authorization: `Bearer ${token}`
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(card)
     })
 }
 
 export function deleteCard(id) {
-    return fetch(`${API}/cards/${id}`,{
+    return fetch(`${API}/${id}`,{
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`
@@ -32,7 +33,7 @@ export function deleteCard(id) {
 }
 
 export function editCard(newCard, cardId) {
-    return fetch(`${API}/cards/${cardId}`,{
+    return fetch(`${API}/${cardId}`,{
         method: "PUT",
         headers: {
             Authorization: `Bearer ${token}`
