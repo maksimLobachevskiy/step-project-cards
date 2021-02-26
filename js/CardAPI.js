@@ -5,6 +5,9 @@ import {token} from './utils/info'
 export function getLogin(email, password) {
     return fetch(`${API}/login`,{
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             email: email,
             password: password
@@ -27,7 +30,7 @@ export function deleteCard(id) {
     return fetch(`${API}/${id}`,{
         method: "DELETE",
         headers: {
-            Authorization: `Bearer ${token}`
+            'Authorization': `Bearer ${token}`
         }
     })
 }
@@ -36,17 +39,19 @@ export function editCard(newCard, cardId) {
     return fetch(`${API}/${cardId}`,{
         method: "PUT",
         headers: {
-            Authorization: `Bearer ${token}`
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(newCard)
     })
 }
 
 export function getCards() {
-    return fetch(`${API}/cards`,{
+    return fetch(`${API}`,{
         method: "GET",
         headers: {
-            Authorization: `Bearer ${token}`
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
     })
 }
