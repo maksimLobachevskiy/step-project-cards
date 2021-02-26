@@ -51,7 +51,6 @@ body{
 }
 
 .btn-primary-btn {
-
     color: #fff;
     background-color: #0d6efd;
     border-color: #0d6efd;
@@ -123,7 +122,6 @@ button.close {
   background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal Content/Box */
 .modalContent {
   background-color: #fefefe;
   margin: 5% auto;
@@ -135,20 +133,21 @@ button.close {
   overflow: auto;
 }
 
-/* The Close Button */
 .modal__header  {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .closeBtn {
   color: #aaa;
   font-size: 28px;
   font-weight: bold;
-}
-
-.closeBtn:hover,
-.closeBtn:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+  &:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &:focus {
+    @extend :hover;
+  }
 }

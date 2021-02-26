@@ -76,7 +76,7 @@ export class VisitCardiologist extends Visit {
             parent.append(this.elem.self)
         }else {
             return this.elem.self;
-        };
+        }
     }
 
     showMore(){
