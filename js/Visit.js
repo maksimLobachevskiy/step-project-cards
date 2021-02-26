@@ -108,3 +108,111 @@ export class VisitCardiologist extends Visit {
         this.elem.btnHide.style.display = 'inline-block';
     }
 }
+
+export class VisitDentist extends Visit {
+    constructor({id, fullName, doctor, purpose, desc, priority, status, lastDateVisit}) {
+        super({id, fullName, doctor, purpose, desc, priority, status});
+        this.lastDateVisit = lastDateVisit;
+    }
+
+    render(parent){
+        super.render(parent);
+        this.elem.lastDateVisit = document.createElement('span');
+
+        this.elem.lastDateVisit.textContent =`Date of last visit: ${this.lastDateVisit}`;
+
+        this.elem.btnShowMore.addEventListener('click', () => {
+            this.showMore()
+        });
+
+        this.elem.btnHide.addEventListener('click', () => {
+            this.hide();
+        });
+
+        if(parent){
+            parent.append(this.elem.self)
+        }else {
+            return this.elem.self;
+        }
+    }
+
+    showMore(){
+        const moreInfo =[];
+
+        for (let key in this.elem) {
+            if (key === 'purpose' || key === 'desc' || key === 'priority' || key === 'status' || key === "lastDateVisit") {
+                moreInfo.push(this.elem[key]);
+            }
+        }
+        moreInfo.forEach(item => {
+            this.elem.self.insertBefore(item, this.elem.btnShowMore);
+        });
+
+        this.elem.btnShowMore.style.display = 'none';
+        this.elem.btnHide.style.display = 'inline-block';
+    }
+
+    hide() {
+        this.elem.self.removeChild(this.elem.purpose);
+        this.elem.self.removeChild(this.elem.desc);
+        this.elem.self.removeChild(this.elem.priority);
+        this.elem.self.removeChild(this.elem.status);
+        this.elem.self.removeChild(this.elem.lastDateVisit);
+        this.elem.btnHide.style.display ='none';
+        this.elem.btnHide.style.display = 'inline-block';
+    }
+}
+
+export class VisitTherapist extends Visit {
+    constructor({id, fullName, doctor, purpose, desc, priority, status, age}) {
+        super({id, fullName, doctor, purpose, desc, priority, status});
+        this.age = age;
+    }
+
+    render(parent){
+        super.render(parent);
+        this.elem.age = document.createElement('span');
+
+        this.elem.age.textContent =`Age: ${this.age}`;
+
+        this.elem.btnShowMore.addEventListener('click', () => {
+            this.showMore()
+        });
+
+        this.elem.btnHide.addEventListener('click', () => {
+            this.hide();
+        });
+
+        if(parent){
+            parent.append(this.elem.self)
+        }else {
+            return this.elem.self;
+        }
+    }
+
+    showMore(){
+        const moreInfo =[];
+
+        for (let key in this.elem) {
+            if (key === 'purpose' || key === 'desc' || key === 'priority' || key === 'status' || key === "age") {
+                moreInfo.push(this.elem[key]);
+            }
+        }
+        moreInfo.forEach(item => {
+            this.elem.self.insertBefore(item, this.elem.btnShowMore);
+        });
+
+        this.elem.btnShowMore.style.display = 'none';
+        this.elem.btnHide.style.display = 'inline-block';
+    }
+
+    hide() {
+        this.elem.self.removeChild(this.elem.purpose);
+        this.elem.self.removeChild(this.elem.desc);
+        this.elem.self.removeChild(this.elem.priority);
+        this.elem.self.removeChild(this.elem.status);
+        this.elem.self.removeChild(this.elem.age);
+        this.elem.btnHide.style.display ='none';
+        this.elem.btnHide.style.display = 'inline-block';
+    }
+}
