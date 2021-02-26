@@ -10,6 +10,7 @@ import LoginForm from "./Form/LoginForm";
 import FormSelect from "./Form/FormSelect";
 import {token} from './utils/info'
 import {API} from "./CardAPI";
+import {VisitCardiologist} from "./Visit";
 
 const selector = new FormSelect();
 const formWrapper = document.querySelector(".select-wrapper");
@@ -17,6 +18,7 @@ selector.render(formWrapper);
 const modal = document.getElementById("myModal");
 const formBtn = document.querySelector(".new-visit");
 const span = document.getElementsByClassName("closeBtn")[0];
+
 
 formBtn.addEventListener('click', () => {
     modal.style.display = "block";
