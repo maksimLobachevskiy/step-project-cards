@@ -1,5 +1,6 @@
 import LoginForm from "./Form/LoginForm";
-import plug from "./Form/plug";
+//import plug from "./Form/plug";
+import renderCards from "./renderCards";
 
 const GHE = (selector) => document.querySelector(selector)
 const email = 'step@project.cards'
@@ -8,6 +9,7 @@ const token = "7b4afba8-3267-406f-8280-a610a6985812";
 const entry = GHE('.entry')
 const newVisit = GHE('.new-visit')
 const exit = GHE('.exit')
+const cardWrapper = document.querySelector('.cardWrapper')
 
 export default function newEntry() {
     entry.addEventListener('click', login)
@@ -19,10 +21,11 @@ export default function newEntry() {
         exit.style = "display:block;"
         newVisit.style = "display:block;"
         entry.style = "display:none;"
-        exit.addEventListener('click', exitLayaut)
-
+        exit.addEventListener('click', exitLayaut);
+        const formInner = document.querySelector('.start__text').innerHTML = "";
+        renderCards(cardWrapper);
         // функция рендера id="content"
-        plug()//удалить
+        //plug()//удалить
     }
     if (!thisToken()) {
 
@@ -65,8 +68,9 @@ function login() {
                         exit.addEventListener('click', exitLayaut)
                         localStorage.setItem('token', respLogin)
                         GHE('.btn-close').click()
+                        renderCards(cardWrapper);
                         // функция рендера id="content"
-                        plug()//удалить
+                        //plug()//удалить
                     }
                 })
         } else {

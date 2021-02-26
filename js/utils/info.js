@@ -82,7 +82,7 @@ export const info = {
     docSelect: [
         "Cardiologist",
         "Dentist",
-        "Therapeutist",
+        "Therapist",
     ],
 
     cardEdit: [

@@ -11,6 +11,7 @@ import FormSelect from "./Form/FormSelect";
 import {token} from './utils/info'
 import {API} from "./CardAPI";
 import {VisitCardiologist} from "./Visit";
+import renderCards from './renderCards';
 
 const selector = new FormSelect();
 const formWrapper = document.querySelector(".select-wrapper");
@@ -34,3 +35,6 @@ window.onclick = function(event) {
     }
 }
 newEntry()
+const cardWrapper = document.querySelector('.cardWrapper')
+    renderCards(cardWrapper)
+
