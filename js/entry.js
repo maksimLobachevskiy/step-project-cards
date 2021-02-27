@@ -22,8 +22,8 @@ export default function newEntry() {
         newVisit.style = "display:block;"
         entry.style = "display:none;"
         exit.addEventListener('click', exitLayaut);
-        const formInner = document.querySelector('.start__text').innerHTML = "";
-        renderCards(cardWrapper);
+
+
         // функция рендера id="content"
         //plug()//удалить
     }
@@ -33,7 +33,7 @@ export default function newEntry() {
 }
 
 function thisToken() {
-    if (localStorage.getItem('token') == token) {
+    if (localStorage.getItem('token') === token) {
 
         return true;
     }
@@ -47,7 +47,7 @@ function login() {
         e.preventDefault();
         const isEmail = GHE('#emailId').value
         const isPassword = GHE('#password').value
-        if (isEmail == email && isPassword == passvord) {
+        if (isEmail === email && isPassword === passvord) {
             fetch("https://ajax.test-danit.com/api/v2/cards/login", {
                 method: 'POST',
                 headers: {
@@ -57,7 +57,7 @@ function login() {
             })
                 .then(response => response.text())
                 .then(respLogin => {
-                    if (respLogin == token) {
+                    if (respLogin === token) {
                         const form=GHE('form')
                         if (form.parentNode) {
                             form.parentNode.removeChild(form);
@@ -68,7 +68,8 @@ function login() {
                         exit.addEventListener('click', exitLayaut)
                         localStorage.setItem('token', respLogin)
                         GHE('.btn-close').click()
-                        renderCards(cardWrapper);
+                        renderCards(cardWrapper)
+                        document.location.reload(); //Перезагрузка страницы автоматом, чтобы подгрузились карточки
                         // функция рендера id="content"
                         //plug()//удалить
                     }

@@ -25,7 +25,7 @@ export default function renderCards(cardWrapper) {
                         return newCard;
                     }
                 })
-                return card;
+                document.querySelector('.start__text').remove();
             }
         });
 }

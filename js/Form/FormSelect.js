@@ -5,13 +5,11 @@ import FormTherapist from "./FormTherapist";
 
 export default class FormSelect {
     constructor() {
-        this.self = document.createElement('div');
         this.select = new SelectDoctor(["Cardiologist", "Dentist", "Therapist"], "doctor", "Choose doctor:").create();
     }
 
     render(modal) {
-        this.self.prepend(this.select);
-        modal.prepend(this.self);
+        modal.append(this.select);
         this.select.addEventListener("change", () => {
            const value = this.select.value;
             this.chooseDoctor(value);

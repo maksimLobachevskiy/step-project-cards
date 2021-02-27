@@ -3,6 +3,7 @@ import Input from "../componets/Input";
 import TextArea from "../componets/TexAria";
 import Select from "../componets/Select";
 import {createCard} from "../CardAPI";
+import renderCards from "../renderCards";
 
 
 export default class Form {
@@ -36,7 +37,9 @@ export default class Form {
             createCard(data)
                 .then(response => response.json())
                 .then(response => console.log(response))
+            readData.reset();
             document.querySelector(".closeBtn").click();
+            document.location.reload();
         });
     }
 }
