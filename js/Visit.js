@@ -63,9 +63,6 @@ export class Visit {
             }
         })
         this.elem.self.append(this.elem.btnDelete, this.elem.fullName, this.elem.doctor, this.elem.btnShowMore, this.elem.btnHide, this.elem.select);
-
-
-
     }
 
 }
