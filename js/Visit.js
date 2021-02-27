@@ -21,6 +21,7 @@ export class Visit {
             status:document.createElement('span'),
             btnShowMore: document.createElement('button'),
             btnHide: document.createElement('button'),
+            btnDelete: document.createElement('div'),
             select: new Select(info.cardEdit, 'form-select').create()
         };
     };
@@ -35,14 +36,33 @@ export class Visit {
         this.elem.btnHide.textContent = `Hide`;
         this.elem.btnHide.style.display = 'none';
 
-        this.elem.self.dataset.id = this.id
+        this.elem.self.id = this.id
         this.elem.self.classList.add('card', 'card-body')
         this.elem.btnShowMore.classList.add('btn', 'btn-success')
         this.elem.btnHide.classList.add('btn', 'btn-warning', 'hide-btn')
         this.elem.doctor.classList.add('doctor-title')
-        // this.elem.select.addEventListener ("change", ) - тут надо будет еще дописать Редатирование Удаление.
-        //
-        this.elem.self.append(this.elem.fullName, this.elem.doctor, this.elem.btnShowMore, this.elem.btnHide, this.elem.select);
+        this.elem.btnDelete.classList.add('btn-delete')
+        this.elem.btnDelete.innerText = '×';
+
+        this.elem.btnDelete.addEventListener('click', () => {
+            const element = document.getElementById(`${this.id}`)
+            deleteCard(this.id)
+                .then(() => element.remove())
+        })
+        this.elem.select.addEventListener ("change", () => {
+            const value = this.elem.select.value;
+            const element = document.getElementById(`${this.id}`)
+            switch (value) {
+                case "Edit":
+
+                    break;
+                case "Delete":
+                    deleteCard(this.id)
+                        .then(() => element.remove())
+                    break;
+            }
+        })
+        this.elem.self.append(this.elem.btnDelete, this.elem.fullName, this.elem.doctor, this.elem.btnShowMore, this.elem.btnHide, this.elem.select);
 
 
 

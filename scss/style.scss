@@ -152,6 +152,23 @@ button.close {
   }
 }
 
+.btn-delete   {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 1rem;
+  &:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &:focus {
+    @extend :hover;
+  }
+}
+
 .cardWrapper {
   margin: 10px 0;
   justify-content: space-between;
