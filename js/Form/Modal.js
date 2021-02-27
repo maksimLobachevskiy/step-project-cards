@@ -1,6 +1,7 @@
 import FormSelect from "./FormSelect";
 import {token} from "../utils/info";
 import LoginForm from "./LoginForm";
+import {login} from "../entry";
 
 export class Modal {
     constructor(modal) {
@@ -71,6 +72,7 @@ export class ModalLogin extends Modal {
         const loginBtn = document.querySelector(".entry");
         loginBtn.addEventListener('click', () => {
             this.self.style.display = "block";
+            login()
         })
 
         this.closeBtn.addEventListener('click', () => {
