@@ -11,26 +11,15 @@ import FormSelect from "./Form/FormSelect";
 import {token} from './utils/info'
 import {API} from "./CardAPI";
 import {VisitCardiologist} from "./Visit";
-
-const selector = new FormSelect();
-const formWrapper = document.querySelector(".select-wrapper");
-selector.render(formWrapper);
-const modal = document.getElementById("myModal");
-const formBtn = document.querySelector(".new-visit");
-const span = document.getElementsByClassName("closeBtn")[0];
+import renderCards from './renderCards';
+import {Modal, ModalVisit} from "./Form/Modal";
 
 
-formBtn.addEventListener('click', () => {
-    modal.style.display = "block";
-})
+const content = document.getElementById('content');
+const modalVisit = new ModalVisit();
+modalVisit.renderModal(content)
 
-span.addEventListener('click', () => {
-    modal.style.display = "none";
-})
-
-window.onclick = function(event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-}
 newEntry()
+const cardWrapper = document.querySelector('.cardWrapper')
+    renderCards(cardWrapper)
+

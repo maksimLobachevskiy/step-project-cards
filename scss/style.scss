@@ -151,3 +151,30 @@ button.close {
     @extend :hover;
   }
 }
+
+.cardWrapper {
+  margin: 10px 0;
+  justify-content: space-between;
+}
+
+.card {
+  width: 250px;
+  margin: 5px;
+
+}
+
+.card-body {
+  flex: 0 0 auto;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+.doctor-title {
+  padding-bottom: 10px;
+}
+
+.hide-btn {
+  margin-top: 10px;
+}

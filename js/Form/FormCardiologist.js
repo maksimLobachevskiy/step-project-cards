@@ -17,7 +17,7 @@ export default class FormCardiologist extends Form {
         super.render(modal);
         this.self.classList.add('form-cardio');
         this.doc.defaultValue = 'Cardiologist';
-        this.doc.disabled = true;
+        this.doc.readOnly = true;
         this.self.insertBefore(this.doc, this.fullName);
         this.self.insertBefore(this.pressure, this.submit);
         this.self.insertBefore(this.bodyMassIndex, this.submit);

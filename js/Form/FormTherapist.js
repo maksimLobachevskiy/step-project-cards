@@ -14,7 +14,7 @@ export default class FormTherapist extends Form {
         super.render(modal);
         this.self.classList.add('form-therapist');
         this.doc.defaultValue = 'Therapist';
-        this.doc.disabled = true;
+        this.doc.readOnly = true;
         this.self.insertBefore(this.doc, this.fullName);
         this.self.insertBefore(this.age, this.submit);
     };

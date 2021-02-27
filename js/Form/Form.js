@@ -3,6 +3,7 @@ import Input from "../componets/Input";
 import TextArea from "../componets/TexAria";
 import Select from "../componets/Select";
 import {createCard} from "../CardAPI";
+import renderCards from "../renderCards";
 
 
 export default class Form {
@@ -10,9 +11,9 @@ export default class Form {
         this.self = document.createElement("form");
         this.self.classList.add('form-doctor');
         this.doctor = doctor;
-        this.fullName = new Input(info.fullName, "form-control", 'name').create();
+        this.fullName = new Input(info.fullName, "form-control", 'fullName').create();
         this.purpose = new Input(info.purpose, "form-control", 'purpose').create();
-        this.desc = new TextArea(info.desc, "form-control", 'description').create();
+        this.desc = new TextArea(info.desc, "form-control", 'desc').create();
         this.priority = new Select(info.priority, 'form-select', '', 'priority').create();
         this.status = new Select(info.status, 'form-select', '', 'status').create();
         this.submit = new Input(info.submit, 'btn-primary-btn', 'btn').create();
@@ -36,6 +37,9 @@ export default class Form {
             createCard(data)
                 .then(response => response.json())
                 .then(response => console.log(response))
+            readData.reset();
+            document.querySelector(".closeBtn").click();
+            document.location.reload();
         });
     }
 }

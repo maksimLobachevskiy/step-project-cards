@@ -1,5 +1,6 @@
 import LoginForm from "./Form/LoginForm";
-import plug from "./Form/plug";
+//import plug from "./Form/plug";
+import renderCards from "./renderCards";
 
 const GHE = (selector) => document.querySelector(selector)
 const email = 'step@project.cards'
@@ -8,6 +9,7 @@ const token = "7b4afba8-3267-406f-8280-a610a6985812";
 const entry = GHE('.entry')
 const newVisit = GHE('.new-visit')
 const exit = GHE('.exit')
+const cardWrapper = document.querySelector('.cardWrapper')
 
 export default function newEntry() {
     entry.addEventListener('click', login)
@@ -19,10 +21,11 @@ export default function newEntry() {
         exit.style = "display:block;"
         newVisit.style = "display:block;"
         entry.style = "display:none;"
-        exit.addEventListener('click', exitLayaut)
+        exit.addEventListener('click', exitLayaut);
+
 
         // функция рендера id="content"
-        plug()//удалить
+        //plug()//удалить
     }
     if (!thisToken()) {
 
@@ -30,7 +33,7 @@ export default function newEntry() {
 }
 
 function thisToken() {
-    if (localStorage.getItem('token') == token) {
+    if (localStorage.getItem('token') === token) {
 
         return true;
     }
@@ -44,7 +47,7 @@ function login() {
         e.preventDefault();
         const isEmail = GHE('#emailId').value
         const isPassword = GHE('#password').value
-        if (isEmail == email && isPassword == passvord) {
+        if (isEmail === email && isPassword === passvord) {
             fetch("https://ajax.test-danit.com/api/v2/cards/login", {
                 method: 'POST',
                 headers: {
@@ -54,7 +57,7 @@ function login() {
             })
                 .then(response => response.text())
                 .then(respLogin => {
-                    if (respLogin == token) {
+                    if (respLogin === token) {
                         const form=GHE('form')
                         if (form.parentNode) {
                             form.parentNode.removeChild(form);
@@ -65,8 +68,10 @@ function login() {
                         exit.addEventListener('click', exitLayaut)
                         localStorage.setItem('token', respLogin)
                         GHE('.btn-close').click()
+                        renderCards(cardWrapper)
+                        document.location.reload(); //Перезагрузка страницы автоматом, чтобы подгрузились карточки
                         // функция рендера id="content"
-                        plug()//удалить
+                        //plug()//удалить
                     }
                 })
         } else {
