@@ -64,7 +64,7 @@ export const info = {
         isRequired: true
     },
     lastDateVisit: {
-        type: "text",
+        type: "date",
         placeholder: "Last visit date",
         isRequired: true
     },

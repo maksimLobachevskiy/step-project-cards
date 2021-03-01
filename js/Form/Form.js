@@ -19,6 +19,7 @@ export default class Form {
     }
 
     render(modal) {
+        this.date.setAttribute('data-placeholder', 'Visit Date');
         this.self.append(this.fullName, this.purpose, this.desc, this.priority, this.date, this.submit);
         modal.append(this.self);
         this.send()
