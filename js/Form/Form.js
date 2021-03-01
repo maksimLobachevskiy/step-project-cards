@@ -37,7 +37,7 @@ export default class Form {
             }), {});
             createCard(data)
                 .then(response => response.json())
-                //.then(response => console.log(response))
+                .then(response => console.log(response))
             readData.reset();
             document.querySelector(".closeBtn").click();
             document.location.reload();
@@ -45,13 +45,15 @@ export default class Form {
     }
 
     renderEdit(modal, id) {
+        this.self.classList.remove('form-doctor');
+        this.self.classList.add('form-doctor-edit');
         this.self.append(this.fullName, this.purpose, this.desc, this.priority, this.date, this.submit);
         modal.append(this.self);
         this.edit(id);
     }
 
     edit(id) {
-        const readData = document.querySelector('.form-edit');
+        const readData = document.querySelector('.form-doctor-edit');
         readData.addEventListener('submit', (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
