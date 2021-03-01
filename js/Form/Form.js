@@ -2,8 +2,7 @@ import {info} from "../utils/info";
 import Input from "../componets/Input";
 import TextArea from "../componets/TexAria";
 import Select from "../componets/Select";
-import {createCard} from "../CardAPI";
-import renderCards from "../renderCards";
+import {editCard, createCard} from "../CardAPI";
 
 
 export default class Form {
@@ -42,5 +41,30 @@ export default class Form {
             document.location.reload();
         });
     }
+
+    renderEdit(modal, id) {
+        this.self.append(this.fullName, this.purpose, this.desc, this.priority, this.status, this.submit);
+        modal.append(this.self);
+        this.edit(id);
+    }
+
+    edit(id) {
+        const readData = document.querySelector('.form-edit');
+        readData.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Array.from(formData.entries()).reduce((memo, pair) => ({
+                ...memo,
+                [pair[0]]: pair[1],
+            }), {});
+            editCard(data, id)
+                .then(response => response.json())
+                .then(response => console.log(response))
+
+            document.querySelector(".closeBtn").click();
+            document.location.reload();
+        });
+    }
+
 }
 

@@ -15,7 +15,7 @@ export default class FormCardiologist extends Form {
 
     render(modal) {
         super.render(modal);
-        this.self.classList.add('form-cardio');
+        this.self.classList.add('form-edit');
         this.doc.defaultValue = 'Cardiologist';
         this.doc.readOnly = true;
         this.self.insertBefore(this.doc, this.fullName);
@@ -23,10 +23,17 @@ export default class FormCardiologist extends Form {
         this.self.insertBefore(this.bodyMassIndex, this.submit);
         this.self.insertBefore(this.diseases, this.submit);
         this.self.insertBefore(this.age, this.submit);
-     //    const connections = [this.pressure, this.bodyMassIndex, this.diseases, this.age];
-     //
-     // connections.forEach(conn => {
-     //       this.self.insertBefore(conn, this.create);
-     //     })
+
     };
+    renderEdit(modal, id) {
+        super.renderEdit(modal, id);
+        this.self.classList.add('form-edit');
+        this.doc.defaultValue = 'Cardiologist';
+        this.doc.readOnly = true;
+        this.self.insertBefore(this.doc, this.fullName);
+        this.self.insertBefore(this.pressure, this.submit);
+        this.self.insertBefore(this.bodyMassIndex, this.submit);
+        this.self.insertBefore(this.diseases, this.submit);
+        this.self.insertBefore(this.age, this.submit);
+    }
 };

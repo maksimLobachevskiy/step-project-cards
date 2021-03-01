@@ -1,8 +1,13 @@
 import {info} from "./utils/info";
 import Select from "./componets/Select";
 import {editCard, deleteCard} from "./CardAPI";
+import FormDentist from "./Form/FormDentist";
+import FormCardiologist from "./Form/FormCardiologist";
+import FormTherapist from "./Form/FormTherapist";
+import Input from "./componets/Input";
+import {ModalVisit} from "./Form/Modal";
 
-export class Visit {
+export default class Visit {
     constructor({id, fullName, doctor, purpose, desc, priority, status}) {
         this.id = id;
         this.status = status;
@@ -44,17 +49,61 @@ export class Visit {
         this.elem.btnDelete.classList.add('btn-delete')
         this.elem.btnDelete.innerText = '×';
 
-        this.elem.btnDelete.addEventListener('click', () => {
+        this.elem.btnDelete.addEventListener('click', (e) => {
+            e.preventDefault();
             const element = document.getElementById(`${this.id}`)
             deleteCard(this.id)
                 .then(() => element.remove())
         })
-        this.elem.select.addEventListener ("change", () => {
+        this.elem.select.addEventListener ("change", (e) => {
+            e.preventDefault();
             const value = this.elem.select.value;
+            const content = document.getElementById('content');
             const element = document.getElementById(`${this.id}`)
+
+            const cardio = new FormCardiologist();
+            const dentist = new FormDentist();
+            const therapist = new FormTherapist();
             switch (value) {
                 case "Edit":
+                    const modalVisitEdit = new ModalVisit();
+                    modalVisitEdit.renderModalEdit(content)
+                    const formWrapper = document.querySelector('.form-wrapper-edit')
+                    if (this.doctor === 'Dentist') {
+                        const modalForm = document.querySelector('.form-edit')
+                        modalForm.style.display = 'block';
+                        dentist.fullName.value = `${this.fullName}`
+                        dentist.purpose.value = `${this.purpose}`
+                        dentist.desc.value = `${this.desc}`
+                        dentist.priority.value = `${this.priority}`
+                        dentist.status.value = `${this.status}`
+                        dentist.lastDateVisit.value = `${this.lastDateVisit}`;
+                        dentist.renderEdit(formWrapper, this.id)
+                    } else if (this.doctor === 'Cardiologist') {
+                        const modalForm = document.querySelector('.form-edit')
+                        modalForm.style.display = 'block';
+                        cardio.fullName.value = `${this.fullName}`
+                        cardio.purpose.value = `${this.purpose}`
+                        cardio.desc.value = `${this.desc}`
+                        cardio.priority.value = `${this.priority}`
+                        cardio.status.value = `${this.status}`
+                        cardio.pressure.value = `${this.pressure}`
+                        cardio.bodyMassIndex.value = `${this.bodyMassIndex}`
+                        cardio.diseases.value = `${this.diseases}`
+                        cardio.age.value = `${this.age}`
+                        cardio.renderEdit(formWrapper, this.id)
 
+                    } else if (this.doctor === 'Therapist') {
+                        const modalForm = document.querySelector('.form-edit')
+                        modalForm.style.display = 'block';
+                        therapist.fullName.value = `${this.fullName}`
+                        therapist.purpose.value = `${this.purpose}`
+                        therapist.desc.value = `${this.desc}`
+                        therapist.priority.value = `${this.priority}`
+                        therapist.status.value = `${this.status}`
+                        therapist.age.value = `${this.age}`;
+                        therapist.renderEdit(formWrapper, this.id)
+                    }
                     break;
                 case "Delete":
                     deleteCard(this.id)
@@ -64,7 +113,6 @@ export class Visit {
         })
         this.elem.self.append(this.elem.btnDelete, this.elem.fullName, this.elem.doctor, this.elem.btnShowMore, this.elem.btnHide, this.elem.select);
     }
-
 }
 
 export class VisitCardiologist extends Visit {
@@ -240,3 +288,4 @@ export class VisitTherapist extends Visit {
         this.elem.btnShowMore.style.display = 'inline-block';
     }
 }
+

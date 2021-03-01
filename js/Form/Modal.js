@@ -42,6 +42,29 @@ export class Modal {
             }
         })
     }
+    renderModalEdit(modal) {
+        this.self.classList.add('form-edit');
+        this.self.id = 'editModal';
+        this.modalContent.classList.add('modalContentEdit');
+        this.modalHeader.classList.add('modal__header');
+        this.closeBtn.classList.add('closeBtn');
+        this.closeBtn.innerHTML = "&times;";
+        this.modalTitle.classList.add('modal-title')
+        this.formWrapper.classList.add('form-insert')
+        this.modalHeader.append(this.modalTitle, this.closeBtn);
+        this.modalContent.append(this.modalHeader, this.formWrapper);
+        this.self.append(this.modalContent);
+        modal.append(this.self);
+        this.closeBtn.addEventListener('click', () => {
+            this.self.style.display = "none";
+        })
+        window.addEventListener('click', (event) => {
+            if (event.target === this.self) {
+                this.self.style.display = "none";
+            }
+        })
+    }
+
 }
 
 export class ModalVisit extends Modal {
@@ -59,6 +82,16 @@ export class ModalVisit extends Modal {
             const selector = new FormSelect();
             selector.render(this.select);
     }
+
+    renderModalEdit(modal) {
+        super.renderModalEdit(modal);
+        this.modalTitle.innerText = 'Edit visit'
+        this.wrapper.classList.add('form-wrapper-edit')
+        this.formWrapper.append(this.wrapper)
+
+    }
+
+
 }
 
 export class ModalLogin extends Modal {

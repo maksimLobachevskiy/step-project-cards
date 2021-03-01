@@ -17,5 +17,13 @@ export default class FormTherapist extends Form {
         this.doc.readOnly = true;
         this.self.insertBefore(this.doc, this.fullName);
         this.self.insertBefore(this.age, this.submit);
-    };
+    }
+
+    renderEdit(modal, id) {
+        super.renderEdit(modal, id);
+        this.doc.defaultValue = 'Therapist';
+        this.doc.readOnly = true;
+        this.self.insertBefore(this.doc, this.fullName);
+        this.self.insertBefore(this.age, this.submit);
+    }
 };
