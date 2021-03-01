@@ -1,4 +1,4 @@
-import {ModalLogin} from "./Form/Modal";
+import {ModalLogin} from "./modal/Modal";
 import renderCards from "./renderCards";
 
 const GHE = (selector) => document.querySelector(selector)
@@ -69,10 +69,7 @@ export function login() {
                         entry.style = "display:none;"
                         exit.addEventListener('click', exitLayaut)
                         localStorage.setItem('token', respLogin)
-                        renderCards(cardWrapper)
-                        document.location.reload(); //Перезагрузка страницы автоматом, чтобы подгрузились карточки
-                        // функция рендера id="content"
-                        //plug() ***//запустить если в id="content" осутствуют карточки
+                        document.location.reload();
                     }
                 })
         } else {

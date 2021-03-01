@@ -1,21 +1,20 @@
 import {info} from "./utils/info";
 import Select from "./componets/Select";
-import {editCard, deleteCard} from "./CardAPI";
+import {deleteCard} from "./CardAPI";
 import FormDentist from "./Form/FormDentist";
 import FormCardiologist from "./Form/FormCardiologist";
 import FormTherapist from "./Form/FormTherapist";
-import Input from "./componets/Input";
-import {ModalVisit} from "./Form/Modal";
+import {ModalVisit} from "./modal/Modal";
 
 export default class Visit {
-    constructor({id, fullName, doctor, purpose, desc, priority, status}) {
+    constructor({id, fullName, doctor, purpose, desc, priority, date}) {
         this.id = id;
-        this.status = status;
         this.doctor = doctor;
         this.fullName = fullName;
         this.purpose = purpose;
         this.priority = priority;
         this.desc = desc;
+        this.date = date;
         this.elem = {
             self: document.createElement('div'),
             fullName: document.createElement('h3'),
@@ -23,7 +22,7 @@ export default class Visit {
             purpose: document.createElement('span'),
             desc: document.createElement('p'),
             priority: document.createElement('span'),
-            status:document.createElement('span'),
+            date: document.createElement('span'),
             btnShowMore: document.createElement('button'),
             btnHide: document.createElement('button'),
             btnDelete: document.createElement('div'),
@@ -36,7 +35,7 @@ export default class Visit {
         this.elem.purpose.textContent = `Purpose of the visit: ${this.purpose}`;
         this.elem.desc.textContent = `Description: ${this.desc}`;
         this.elem.priority.textContent = `Priority: ${this.priority}`;
-        this.elem.status.textContent = `Status: ${this.status}`;
+        this.elem.date.textContent = `Visit Date: ${this.date}`;
         this.elem.btnShowMore.textContent = `Show More`;
         this.elem.btnHide.textContent = `Hide`;
         this.elem.btnHide.style.display = 'none';
@@ -53,7 +52,12 @@ export default class Visit {
             e.preventDefault();
             const element = document.getElementById(`${this.id}`)
             deleteCard(this.id)
-                .then(() => element.remove())
+                .then((response) => {
+                    if(response.ok) {
+                        return element.remove();
+                    }
+
+                })
         })
         this.elem.select.addEventListener ("change", (e) => {
             e.preventDefault();
@@ -76,7 +80,7 @@ export default class Visit {
                         dentist.purpose.value = `${this.purpose}`
                         dentist.desc.value = `${this.desc}`
                         dentist.priority.value = `${this.priority}`
-                        dentist.status.value = `${this.status}`
+                        dentist.date.value = `${this.date}`
                         dentist.lastDateVisit.value = `${this.lastDateVisit}`;
                         dentist.renderEdit(formWrapper, this.id)
                     } else if (this.doctor === 'Cardiologist') {
@@ -86,7 +90,7 @@ export default class Visit {
                         cardio.purpose.value = `${this.purpose}`
                         cardio.desc.value = `${this.desc}`
                         cardio.priority.value = `${this.priority}`
-                        cardio.status.value = `${this.status}`
+                        cardio.date.value = `${this.date}`
                         cardio.pressure.value = `${this.pressure}`
                         cardio.bodyMassIndex.value = `${this.bodyMassIndex}`
                         cardio.diseases.value = `${this.diseases}`
@@ -100,14 +104,20 @@ export default class Visit {
                         therapist.purpose.value = `${this.purpose}`
                         therapist.desc.value = `${this.desc}`
                         therapist.priority.value = `${this.priority}`
-                        therapist.status.value = `${this.status}`
+                        therapist.date.value = `${this.date}`
                         therapist.age.value = `${this.age}`;
                         therapist.renderEdit(formWrapper, this.id)
                     }
                     break;
                 case "Delete":
                     deleteCard(this.id)
-                        .then(() => element.remove())
+                        .then((response) => {
+                            if(response.ok) {
+                               return element.remove();
+                            }
+
+                        })
+                        //.then(() => element.remove())
                     break;
             }
         })
@@ -116,10 +126,10 @@ export default class Visit {
 }
 
 export class VisitCardiologist extends Visit {
-    constructor({id, fullName, doctor, purpose, desc, priority, status, pressure, weightIndex, diseases, age}) {
-        super({id, fullName, doctor, purpose, desc, priority, status});
+    constructor({id, fullName, doctor, purpose, desc, priority, date, pressure, bodyMassIndex, diseases, age}) {
+        super({id, fullName, doctor, purpose, desc, priority, date});
         this.pressure = pressure;
-        this.weightIndex = weightIndex;
+        this.bodyMassIndex = bodyMassIndex;
         this.diseases = diseases;
         this.age = age;
     }
@@ -127,12 +137,12 @@ export class VisitCardiologist extends Visit {
     render(parent){
         super.render(parent);
         this.elem.pressure = document.createElement('span');
-        this.elem.weightIndex = document.createElement('span');
+        this.elem.bodyMassIndex = document.createElement('span');
         this.elem.diseases = document.createElement('span');
         this.elem.age = document.createElement('span');
 
         this.elem.pressure.textContent =`Pressure: ${this.pressure}`;
-        this.elem.weightIndex.textContent =`Body mass index: ${this.weightIndex}`;
+        this.elem.bodyMassIndex.textContent =`Body mass index: ${this.bodyMassIndex}`;
         this.elem.diseases.textContent = `Past heart disease: ${this.diseases}`;
         this.elem.age.textContent = `Age: ${this.age}`;
 
@@ -155,7 +165,7 @@ export class VisitCardiologist extends Visit {
         const moreInfo =[];
 
         for (let key in this.elem) {
-            if (key === 'purpose' || key === 'desc' || key === 'priority' || key === 'status' || key === 'pressure' || key === 'weightIndex' || key === 'diseases' || key === "age") {
+            if (key === 'purpose' || key === 'desc' || key === 'priority' || key === 'date' || key === 'pressure' || key === 'bodyMassIndex' || key === 'diseases' || key === "age") {
                 moreInfo.push(this.elem[key]);
             }
         }
@@ -171,9 +181,9 @@ export class VisitCardiologist extends Visit {
         this.elem.self.removeChild(this.elem.purpose);
         this.elem.self.removeChild(this.elem.desc);
         this.elem.self.removeChild(this.elem.priority);
-        this.elem.self.removeChild(this.elem.status);
+        this.elem.self.removeChild(this.elem.date);
         this.elem.self.removeChild(this.elem.pressure);
-        this.elem.self.removeChild(this.elem.weightIndex);
+        this.elem.self.removeChild(this.elem.bodyMassIndex);
         this.elem.self.removeChild(this.elem.diseases);
         this.elem.self.removeChild(this.elem.age);
         this.elem.btnHide.style.display ='none';
@@ -182,8 +192,8 @@ export class VisitCardiologist extends Visit {
 }
 
 export class VisitDentist extends Visit {
-    constructor({id, fullName, doctor, purpose, desc, priority, status, lastDateVisit}) {
-        super({id, fullName, doctor, purpose, desc, priority, status});
+    constructor({id, fullName, doctor, purpose, desc, priority, date, lastDateVisit}) {
+        super({id, fullName, doctor, purpose, desc, priority, date});
         this.lastDateVisit = lastDateVisit;
     }
 
@@ -212,7 +222,7 @@ export class VisitDentist extends Visit {
         const moreInfo =[];
 
         for (let key in this.elem) {
-            if (key === 'purpose' || key === 'desc' || key === 'priority' || key === 'status' || key === "lastDateVisit") {
+            if (key === 'purpose' || key === 'desc' || key === 'priority' || key === 'date' || key === "lastDateVisit") {
                 moreInfo.push(this.elem[key]);
             }
         }
@@ -228,7 +238,7 @@ export class VisitDentist extends Visit {
         this.elem.self.removeChild(this.elem.purpose);
         this.elem.self.removeChild(this.elem.desc);
         this.elem.self.removeChild(this.elem.priority);
-        this.elem.self.removeChild(this.elem.status);
+        this.elem.self.removeChild(this.elem.date);
         this.elem.self.removeChild(this.elem.lastDateVisit);
         this.elem.btnHide.style.display ='none';
         this.elem.btnShowMore.style.display = 'inline-block';
@@ -236,8 +246,8 @@ export class VisitDentist extends Visit {
 }
 
 export class VisitTherapist extends Visit {
-    constructor({id, fullName, doctor, purpose, desc, priority, status, age}) {
-        super({id, fullName, doctor, purpose, desc, priority, status});
+    constructor({id, fullName, doctor, purpose, desc, priority, date, age}) {
+        super({id, fullName, doctor, purpose, desc, priority, date});
         this.age = age;
     }
 
@@ -266,7 +276,7 @@ export class VisitTherapist extends Visit {
         const moreInfo =[];
 
         for (let key in this.elem) {
-            if (key === 'purpose' || key === 'desc' || key === 'priority' || key === 'status' || key === "age") {
+            if (key === 'purpose' || key === 'desc' || key === 'priority' || key === 'date' || key === "age") {
                 moreInfo.push(this.elem[key]);
             }
         }
@@ -282,7 +292,7 @@ export class VisitTherapist extends Visit {
         this.elem.self.removeChild(this.elem.purpose);
         this.elem.self.removeChild(this.elem.desc);
         this.elem.self.removeChild(this.elem.priority);
-        this.elem.self.removeChild(this.elem.status);
+        this.elem.self.removeChild(this.elem.date);
         this.elem.self.removeChild(this.elem.age);
         this.elem.btnHide.style.display ='none';
         this.elem.btnShowMore.style.display = 'inline-block';

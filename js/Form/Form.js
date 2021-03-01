@@ -14,11 +14,12 @@ export default class Form {
         this.purpose = new Input(info.purpose, "form-control", 'purpose').create();
         this.desc = new TextArea(info.desc, "form-control", 'desc').create();
         this.priority = new Select(info.priority, 'form-select', '', 'priority').create();
-        this.status = new Select(info.status, 'form-select', '', 'status').create();
+        this.date = new Input(info.visitDate, 'form-control', 'date').create();
         this.submit = new Input(info.submit, 'btn-primary-btn', 'btn').create();
     }
+
     render(modal) {
-        this.self.append(this.fullName, this.purpose, this.desc, this.priority, this.status, this.submit);
+        this.self.append(this.fullName, this.purpose, this.desc, this.priority, this.date, this.submit);
         modal.append(this.self);
         this.send()
     }
@@ -35,7 +36,7 @@ export default class Form {
             }), {});
             createCard(data)
                 .then(response => response.json())
-                .then(response => console.log(response))
+                //.then(response => console.log(response))
             readData.reset();
             document.querySelector(".closeBtn").click();
             document.location.reload();
@@ -43,7 +44,7 @@ export default class Form {
     }
 
     renderEdit(modal, id) {
-        this.self.append(this.fullName, this.purpose, this.desc, this.priority, this.status, this.submit);
+        this.self.append(this.fullName, this.purpose, this.desc, this.priority, this.date, this.submit);
         modal.append(this.self);
         this.edit(id);
     }
@@ -65,6 +66,5 @@ export default class Form {
             document.location.reload();
         });
     }
-
 }
 
