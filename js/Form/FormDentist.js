@@ -10,6 +10,7 @@ export default class FormDentist extends Form {
     }
     render(modal) {
         super.render(modal);
+        this.lastDateVisit.setAttribute('data-placeholder', 'Last Visit Date');
         this.self.classList.add('form-dentist');
         this.doc.defaultValue = 'Dentist';
         this.doc.readOnly = true;
