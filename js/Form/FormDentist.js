@@ -4,7 +4,7 @@ import Form from "./Form.js";
 
 export default class FormDentist extends Form {
     constructor(doctor) {
-        super(doctor)
+        super (doctor)
         this.doc = new Input(info.dentist, "form-control", 'doctor').create();
         this.lastDateVisit = new Input(info.lastDateVisit, "form-control", 'lastDateVisit').create();
     }
@@ -16,6 +16,14 @@ export default class FormDentist extends Form {
         this.self.insertBefore(this.doc, this.fullName);
         this.self.insertBefore(this.lastDateVisit, this.submit);
 
-    };
+    }
 
-};
+    renderEdit(modal, id) {
+        super.renderEdit(modal, id);
+        this.doc.defaultValue = 'Dentist';
+        this.doc.readOnly = true;
+        this.self.insertBefore(this.doc, this.fullName);
+        this.self.insertBefore(this.lastDateVisit, this.submit);
+    }
+}
+

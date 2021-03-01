@@ -55,3 +55,13 @@ export function getCards() {
         }
     })
 }
+
+export function getCard(cardId) {
+    return fetch(`${API}/${cardId}`,{
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+}
