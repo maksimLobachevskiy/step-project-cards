@@ -68,6 +68,13 @@ export const info = {
         placeholder: "Last visit date",
         isRequired: true
     },
+
+    visitDate: {
+        type: "date",
+        placeholder: "Visit date",
+        isRequired: true
+    },
+
     submit: {
         type: "submit"
     },

@@ -3,7 +3,7 @@ import 'bootstrap'
 import '/scss/style.scss'
 import newEntry, {GHE} from './entry'
 import renderCards from './renderCards';
-import {ModalVisit} from "./Form/Modal";
+import {ModalVisit} from "./modal/Modal";
 
 
 const content = document.getElementById('content');

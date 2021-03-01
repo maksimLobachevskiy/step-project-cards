@@ -1,4 +1,4 @@
-import FormSelect from "./FormSelect";
+import FormSelect from "../Form/FormSelect";
 import {token} from "../utils/info";
 import LoginForm from "./LoginForm";
 import {login} from "../entry";
@@ -57,10 +57,14 @@ export class Modal {
         modal.append(this.self);
         this.closeBtn.addEventListener('click', () => {
             this.self.style.display = "none";
+            this.self.remove();
+
         })
         window.addEventListener('click', (event) => {
             if (event.target === this.self) {
                 this.self.style.display = "none";
+                this.self.remove();
+
             }
         })
     }
